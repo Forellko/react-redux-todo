@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import InputNewTask from './components/InputNewTask';
 import TaskList from './components/TaskList'
+import Counter from './components/Counter'
 import Filter from './components/Filter'
 
 
@@ -10,7 +11,6 @@ class App extends React.Component {
   constructor (props) {
     super(props);
     this.mainTasks = [];
-    this.indexDoneTasks = new Set();
     this.state = {
       allTasks: [],
     };
@@ -20,11 +20,11 @@ class App extends React.Component {
     this.doneTask = this.doneTask.bind(this);
   }
 
-  addNewTask (task) {
+  addNewTask (newText) {
     this.resetFilter();
     let arrTasks = [...this.state.allTasks];
-    arrTasks.push(task);
-    this.mainTasks.push(task);
+    arrTasks.push({text: newText, isDone: false});
+    this.mainTasks.push({text: newText, isDone: false});
     this.setState({
       allTasks: arrTasks,
     });
@@ -40,11 +40,10 @@ class App extends React.Component {
   }
 
   doneTask (index) {
-    if(this.indexDoneTasks.has(index)) {
-      this.indexDoneTasks.delete(index);
-    } else {
-      this.indexDoneTasks.add(index);
-    }
+    const newArr = [...this.state.allTasks];
+    newArr[index].isDone = !newArr[index].isDone;
+    this.mainTasks = [...newArr];
+    this.setState({allTasks: newArr});
   }
 
   resetFilter() {
@@ -57,10 +56,16 @@ class App extends React.Component {
       return;
     }
 
-    const doneIndex = Array.from(this.indexDoneTasks);
     if(e.target.value === 'left') {
-  } else if (e.target.value === 'done') {
-    let arrDoneFilter = doneIndex.map((index)=> this.state.allTasks[index])
+      let arrDoneFilter = this.mainTasks.filter((elem, index) => {if(elem.isDone) {return false} else {return true} } )
+      this.setState(
+          {
+            allTasks: [...arrDoneFilter]
+          }
+        )
+      }
+    else if (e.target.value === 'done') {
+    let arrDoneFilter = this.mainTasks.filter((elem, index) => {if(elem.isDone) {return true} else {return false} } )
     this.setState(
         {
           allTasks: [...arrDoneFilter]
@@ -74,6 +79,7 @@ class App extends React.Component {
     return (<div className="App">
       <InputNewTask newTask={this.addNewTask}></InputNewTask>
       <TaskList allTasks={this.state.allTasks} deleteTask={this.deleteTask} doneTask={this.doneTask}></TaskList>
+      <Counter mainTasks={this.mainTasks}></Counter>
       <Filter setFilter={this.setFilter}></Filter>
     </div>)
   }
