@@ -15,9 +15,11 @@ class InputNewTask extends React.Component {
 
 
     return (
-      <form className="input-new-task__form"  onSubmit={(e) => {e.preventDefault(); this.onSubmitInputTask(e)}}>
-        <input className="input-new-task__input"></input>
-      </form>
+      <div className="input-new-task">
+        <form className="input-new-task__form"  onSubmit={(e) => {e.preventDefault(); this.onSubmitInputTask(e)}}>
+          <input className="input-new-task__input"></input>
+        </form>
+      </div>
     )
   }
 }

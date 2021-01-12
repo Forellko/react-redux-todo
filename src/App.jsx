@@ -1,25 +1,23 @@
 import React from 'react';
+import { connect } from 'react-redux'
 import './App.css';
 import InputNewTask from './components/InputNewTask';
 import TaskList from './components/TaskList'
 import Counter from './components/Counter'
 import Filter from './components/Filter'
-
+import { addTask, deleteTask, toggleTask} from './store/todoReducer/actionCreator.js'
 
 class App extends React.Component {
 
   constructor (props) {
     super(props);
-    this.mainTasks = [];
-    this.state = {
-      allTasks: [],
-    };
+    
     this.addNewTask = this.addNewTask.bind(this);
     this.deleteTask = this.deleteTask.bind(this);
     this.setFilter = this.setFilter.bind(this);
     this.doneTask = this.doneTask.bind(this);
+    console.log(this.props.filter);
   }
-
   addNewTask (newText) {
     this.resetFilter();
     let arrTasks = [...this.state.allTasks];
@@ -79,10 +77,17 @@ class App extends React.Component {
     return (<div className="App">
       <InputNewTask newTask={this.addNewTask}></InputNewTask>
       <TaskList allTasks={this.state.allTasks} deleteTask={this.deleteTask} doneTask={this.doneTask}></TaskList>
-      <Counter mainTasks={this.mainTasks}></Counter>
-      <Filter setFilter={this.setFilter}></Filter>
+      <Counter  mainTasks={this.mainTasks}></Counter>
+      <Filter  setFilter={this.setFilter}></Filter>
     </div>)
   }
 }
 
-export default App;
+
+const mapStateToProps = (state) => ({
+  currentInput: state?.todo.currentInput,
+  allTasks: state?.todo.allTasks,
+  filter: state?.todo.filter,
+});
+
+export default connect(mapStateToProps, { addTask, deleteTask, toggleTask})(App);
