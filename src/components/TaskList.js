@@ -1,19 +1,19 @@
-import React from 'react'
-import ListUnit from './ListUnit';
+import React from "react";
+import ListUnit from "./ListUnit";
 
 export default class TaskList extends React.Component {
-    
   render() {
-    const task =  this.props.allTasks.map((elem, index)=>{
-      return(
-        <ListUnit key={index} id={index} taskText={elem.text} deleteTask={this.props.deleteTask} doneTask={this.props.doneTask} isDone={elem.isDone}/>
-      )
+    const task = this.props.todoList.map((elem, index) => {
+      return (
+        <ListUnit
+          key={"key" + Math.random()}
+          task={elem}
+          deleteTask={this.props.deleteTask}
+          toggleTask={this.props.toggleTask}
+        />
+      );
     });
 
-    return (
-      <ul className="task-list">
-         {task}
-      </ul>
-    )
+    return <ul className="task-list">{task}</ul>;
   }
 }
