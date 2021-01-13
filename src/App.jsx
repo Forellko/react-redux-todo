@@ -1,10 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
 import "./App.css";
-import InputNewTask from "./components/InputNewTask";
-import TaskList from "./components/TaskList";
-import Counter from "./components/Counter";
-import Filter from "./components/Filter";
+import Header from "./components/header/Header";
+import TaskList from "./components/body/TaskList";
+import Counter from "./components/footer/Counter";
+import Filter from "./components/footer/Filter";
 import {
   addTask,
   deleteTask,
@@ -12,6 +12,8 @@ import {
   currentInputChange,
   filterTask,
 } from "./store/todoReducer/actionCreator.js";
+import Body from "./components/body/Body";
+import Footer from "./components/footer/Footer";
 
 class App extends React.Component {
   /*
@@ -116,18 +118,23 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <InputNewTask
+        <Header
+          className="toDoList__container"
           addTask={this.props.addTask}
           currentInputChange={this.props.currentInputChange}
           currentInput={this.props.currentInput}
-        ></InputNewTask>
-        <TaskList
+        ></Header>
+        <Body
+          className="toDoList__container"
           deleteTask={this.props.deleteTask}
           toggleTask={this.props.toggleTask}
           todoList={this.selectFilter()}
-        ></TaskList>
-        <Counter todoList={this.props.todoList}></Counter>
-        <Filter filterTask={this.props.filterTask}></Filter>
+        ></Body>
+        <Footer
+          className="toDoList__container"
+          todoList={this.props.todoList}
+          filterTask={this.props.filterTask}
+        ></Footer>
       </div>
     );
   }
