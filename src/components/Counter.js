@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react'
+import React from 'react'
 import { createStore } from 'redux'
 
 export default class Counter extends React.Component {

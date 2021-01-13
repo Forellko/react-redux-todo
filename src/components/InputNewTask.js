@@ -26,6 +26,7 @@ class InputNewTask extends React.Component {
         >
           <input
             className="input-new-task__input"
+            placeholder="What needs to be done?"
             value={this.props.currentInput}
             onChange={(e) => {
               e.preventDefault();

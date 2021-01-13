@@ -6,6 +6,7 @@ export default class TaskList extends React.Component {
     const task = this.props.todoList.map((elem, index) => {
       return (
         <ListUnit
+          className="task-list"
           key={"key" + Math.random()}
           task={elem}
           deleteTask={this.props.deleteTask}

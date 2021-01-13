@@ -15,9 +15,9 @@ export default class Filter extends React.Component {
           this.props.filterTask(e.target.value);
         }}
       >
-        <input className="filter__left" type="button" value="left"></input>
-        <input className="filter__done" type="button" value="done"></input>
-        <input className="filter__all" type="button" value="all"></input>
+        <input className="filter__left filters" type="button" value="left"></input>
+        <input className="filter__done filters" type="button" value="done"></input>
+        <input className="filter__all filters" type="button" value="all"></input>
       </form>
     );
   }
