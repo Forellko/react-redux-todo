@@ -3,9 +3,6 @@ import actionConsts from "./actionConsts";
 const initialState = {
   currentInput: "",
   todoList: [],
-  doneList: [],
-  undoneList: [],
-
   filter: "all",
 };
 

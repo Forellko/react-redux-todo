@@ -87,6 +87,32 @@ class App extends React.Component {
   // }
   */
 
+  selectFilter() {
+    switch (this.props.filter) {
+      case "all":
+        return this.props.todoList;
+
+      case "done":
+        return this.props.todoList.filter((elm) => {
+          if (elm.isDone) {
+            return true;
+          }
+          return false;
+        });
+
+      case "left":
+        return this.props.todoList.filter((elm) => {
+          if (elm.isDone) {
+            return false;
+          }
+          return true;
+        });
+
+      default:
+        return this.props.todoList;
+    }
+  }
+
   render() {
     return (
       <div className="App">
@@ -94,12 +120,11 @@ class App extends React.Component {
           addTask={this.props.addTask}
           currentInputChange={this.props.currentInputChange}
           currentInput={this.props.currentInput}
-          filter={this.props.filter}
         ></InputNewTask>
         <TaskList
           deleteTask={this.props.deleteTask}
           toggleTask={this.props.toggleTask}
-          todoList={this.props.todoList}
+          todoList={this.selectFilter()}
         ></TaskList>
         <Counter todoList={this.props.todoList}></Counter>
         <Filter filterTask={this.props.filterTask}></Filter>
@@ -111,8 +136,6 @@ class App extends React.Component {
 const mapStateToProps = (state) => ({
   currentInput: state.todo.currentInput,
   todoList: state.todo.todoList,
-  doneList: state.todo.doneList,
-  undoneList: state.todo.undoneList,
   filter: state.todo.filter,
 });
 
