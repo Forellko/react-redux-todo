@@ -16,23 +16,20 @@ class InputNewTask extends React.Component {
   
     render() {
       return (
-        <form
-          className="header__newTodo"
-        >
-          <input
-            className="header__input header__input-edit"
-            placeholder="What needs to be done?"
-            value={this.props.currentInput}
-            onChange={(e) => {
-              e.preventDefault();
-              this.onChangeInputTask(e);
-            }}
-          onSubmit={(e) => {
+        <input
+          className="new-todo"
+          id="new-todo"
+          placeholder="What needs to be done?"
+          value={this.props.currentInput}
+          onChange={(e) => {
             e.preventDefault();
-            this.onSubmitInputTask();
+            this.onChangeInputTask(e);
           }}
-          ></input>
-        </form>
+        onSubmit={(e) => {
+          e.preventDefault();
+          this.onSubmitInputTask();
+        }}
+        ></input>
       );
     }
   }

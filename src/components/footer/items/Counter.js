@@ -1,12 +1,19 @@
-import React from 'react'
+import React from "react";
 
 export default class Counter extends React.Component {
   render() {
-    const arrDoneFilter = this.props.todoList.filter((elem) => {if(elem.isDone) {return false} else {return true} } )
+    const arrDoneFilter = this.props.todoList.filter((elem) => {
+      if (elem.isDone) {
+        return false;
+      } else {
+        return true;
+      }
+    });
     return (
-      <div className="counter">
-        {'left ' + arrDoneFilter.length}
-      </div>
-    )
+      <span className="todo-count" id="count">
+        <strong>{arrDoneFilter.length + " items left"}</strong>
+        {"left " + arrDoneFilter.length}
+      </span>
+    );
   }
 }

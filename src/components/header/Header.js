@@ -5,7 +5,7 @@ export default class Header extends React.Component {
   render() {
     return (
       <header className="header">
-        <h1 className="header__title">todos</h1>
+        <h1>todos</h1>
         <InputNewTask
           addTask={this.props.addTask}
           currentInputChange={this.props.currentInputChange}
