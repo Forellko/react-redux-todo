@@ -1,14 +1,13 @@
 import React from "react";
 import { connect } from "react-redux";
 import "./App.css";
-import Header from "./components/header/Header";
-import Main from './components/main/Main'
-import Footer from "./components/footer/Footer";
+import Header from "./sections/Header/Header";
+import Main from "./sections/Main/Main";
+import Footer from "./sections/Footer/Footer";
 import {
   addTask,
   deleteTask,
   toggleTask,
-  currentInputChange,
   filterTask,
   clearCompleted,
   toggleAll,
@@ -148,7 +147,6 @@ const mapStateToProps = (state) => ({
 
 export default connect(mapStateToProps, {
   addTask,
-  currentInputChange,
   deleteTask,
   toggleTask,
   filterTask,

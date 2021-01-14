@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import TaskList from "./items/TaskList";
-import ToggleAll from "./items/ToggleAll";
+import TaskList from "./components/TaskList";
+import ToggleAll from "./components/ToggleAll";
 
 export default class Main extends Component {
   render() {

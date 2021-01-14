@@ -1,5 +1,5 @@
 import React from "react";
-import InputNewTask from "./items/InputNewTask";
+import InputNewTask from "./components/InputNewTask";
 
 export default class Header extends React.Component {
   render() {

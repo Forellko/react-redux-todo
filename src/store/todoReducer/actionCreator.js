@@ -1,10 +1,5 @@
 import actionConsts from "./actionConsts";
 
-export const currentInputChange = (payload) => ({
-  type: actionConsts.currentInputChange,
-  payload,
-});
-
 export const addTask = (payload) => ({
   type: actionConsts.add,
   payload,
@@ -23,14 +18,13 @@ export const deleteTask = (payload) => ({
 export const filterTask = (payload) => ({
   type: actionConsts.filter,
   payload,
-})
+});
 
 export const clearCompleted = (payload) => ({
   type: actionConsts.clearCompleted,
   payload,
-})
+});
 
 export const toggleAll = () => ({
   type: actionConsts.toggleAll,
-})
-
+});

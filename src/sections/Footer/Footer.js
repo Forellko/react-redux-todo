@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import ClearCompleted from "./items/ClearCompleted";
-import Counter from "./items/Counter";
-import Filter from "./items/Filter";
+import ClearCompleted from "./components/ClearCompleted";
+import Counter from "./components/Counter";
+import Filter from "./components/Filter";
 
 export default class Footer extends Component {
   render() {
