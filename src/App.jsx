@@ -10,6 +10,8 @@ import {
   toggleTask,
   currentInputChange,
   filterTask,
+  clearCompleted,
+  toggleAll,
 } from "./store/todoReducer/actionCreator.js";
 
 class App extends React.Component {
@@ -91,7 +93,7 @@ class App extends React.Component {
       case "all":
         return this.props.todoList;
 
-      case "done":
+      case "completed":
         return this.props.todoList.filter((elm) => {
           if (elm.isDone) {
             return true;
@@ -99,7 +101,7 @@ class App extends React.Component {
           return false;
         });
 
-      case "left":
+      case "active":
         return this.props.todoList.filter((elm) => {
           if (elm.isDone) {
             return false;
@@ -114,7 +116,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="App">
+      <section className="todoapp">
         <Header
           addTask={this.props.addTask}
           currentInputChange={this.props.currentInputChange}
@@ -124,14 +126,16 @@ class App extends React.Component {
           className="toDoList__container"
           deleteTask={this.props.deleteTask}
           toggleTask={this.props.toggleTask}
+          toggleAll={this.props.toggleAll}
           todoList={this.selectFilter()}
         ></Main>
-        {/* <Footer
+        <Footer
           className="toDoList__container"
           todoList={this.props.todoList}
           filterTask={this.props.filterTask}
-        ></Footer> */}
-      </div>
+          clearCompleted={this.props.clearCompleted}
+        ></Footer>
+      </section>
     );
   }
 }
@@ -148,4 +152,6 @@ export default connect(mapStateToProps, {
   deleteTask,
   toggleTask,
   filterTask,
+  clearCompleted,
+  toggleAll,
 })(App);

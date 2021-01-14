@@ -24,3 +24,13 @@ export const filterTask = (payload) => ({
   type: actionConsts.filter,
   payload,
 })
+
+export const clearCompleted = (payload) => ({
+  type: actionConsts.clearCompleted,
+  payload,
+})
+
+export const toggleAll = () => ({
+  type: actionConsts.toggleAll,
+})
+

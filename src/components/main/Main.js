@@ -6,11 +6,11 @@ export default class Main extends Component {
   render() {
     return (
       <section className="main" id="main">
-        <ToggleAll></ToggleAll>
+        <ToggleAll toggleAll={this.props.toggleAll}></ToggleAll>
         <TaskList
           deleteTask={this.props.deleteTask}
           toggleTask={this.props.toggleTask}
-          todoList={this.selectFilter()}
+          todoList={this.props.todoList}
         ></TaskList>
       </section>
     );

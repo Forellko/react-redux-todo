@@ -12,7 +12,6 @@ export default class Counter extends React.Component {
     return (
       <span className="todo-count" id="count">
         <strong>{arrDoneFilter.length + " items left"}</strong>
-        {"left " + arrDoneFilter.length}
       </span>
     );
   }

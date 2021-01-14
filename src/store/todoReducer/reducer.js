@@ -1,20 +1,14 @@
 import actionConsts from "./actionConsts";
-
-const initialState = {
-  currentInput: "",
-  todoList: [],
-  filter: "all",
-};
+import initialState from "./initialState";
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default (state = initialState, { type, payload }) => {
   switch (type) {
-
     case actionConsts.currentInputChange:
       return {
         ...state,
-        currentInput: payload
-      }
+        currentInput: payload,
+      };
 
     case actionConsts.add:
       return {
@@ -55,7 +49,37 @@ export default (state = initialState, { type, payload }) => {
       return {
         ...state,
         filter: payload,
-      }
+      };
+
+    case actionConsts.clearCompleted:
+      return {
+        ...state,
+        todoList: [
+          ...state.todoList.filter((elm) => {
+            if (elm.isDone) return false;
+            return true;
+          }),
+        ],
+      };
+
+    case actionConsts.toggleAll:
+
+      let toggleToDone = false;
+      state.todoList.forEach((elm) => {
+        if (!elm.isDone) {
+          toggleToDone = true;
+        }
+      });
+
+      return {
+        ...state,
+        todoList: [
+          ...state.todoList.map((elm) => {
+            elm.isDone = toggleToDone;
+            return elm;
+          })
+        ],
+      };
 
     default:
       return state;

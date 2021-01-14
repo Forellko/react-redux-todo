@@ -4,6 +4,8 @@ const actionConsts = {
   toggle: "toggle",
   delete: "delete",
   filter: "filter",
+  clearCompleted: "clearCompleted",
+  toggleAll: "toggleAll",
 };
 
 export default actionConsts;
