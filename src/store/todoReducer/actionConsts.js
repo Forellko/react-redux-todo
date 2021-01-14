@@ -1,3 +1,5 @@
+const ACTION_ADD = "ACTON_ADD";
+
 const actionConsts = {
   currentInputChange: "currentInputChange",
   add: "add",

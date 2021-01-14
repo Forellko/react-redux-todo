@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import ClearCompleted from "./items/clearCompleted";
+import ClearCompleted from "./items/ClearCompleted";
 import Counter from "./items/Counter";
 import Filter from "./items/Filter";
 

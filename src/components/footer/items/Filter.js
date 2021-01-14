@@ -5,6 +5,8 @@ export default class Filter extends React.Component {
   onClickFilter(e) {}
 
   render() {
+    const { filterTask } = this.props;
+
     return (
       <ul className="filters">
         <li>
@@ -14,7 +16,7 @@ export default class Filter extends React.Component {
             className=""
             onClick={(e) => {
               e.preventDefault();
-              this.props.filterTask('all');
+              filterTask("all");
             }}
           >
             All{" "}
@@ -27,7 +29,7 @@ export default class Filter extends React.Component {
             className=""
             onClick={(e) => {
               e.preventDefault();
-              this.props.filterTask('active');
+              filterTask("active");
             }}
           >
             Active{" "}
@@ -40,7 +42,7 @@ export default class Filter extends React.Component {
             className=""
             onClick={(e) => {
               e.preventDefault();
-              this.props.filterTask('completed');
+              filterTask("completed");
             }}
           >
             Completed{" "}
