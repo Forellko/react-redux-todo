@@ -1,4 +1,4 @@
-import { CLEAR_COMPLETED_TASKS, TOGGLE_TASK } from "./manipulationActions";
+import { CLEAR_COMPLETED_TASKS, TOGGLE_TASKS } from "./manipulationActions";
 
 export const clearCompleted = (payload) => ({
   type: CLEAR_COMPLETED_TASKS,
@@ -6,5 +6,5 @@ export const clearCompleted = (payload) => ({
 });
 
 export const toggleAll = () => ({
-  type: TOGGLE_TASK,
+  type: TOGGLE_TASKS,
 });

@@ -1,15 +1,13 @@
 /* eslint-disable default-case */
 /* eslint-disable import/no-anonymous-default-export */
-import { DELETE_TASK } from "../modificReducer/todoListActions";
-import { TOGGLE_TASK } from "../modificReducer/todoListActions";
-import { ADD_TASK } from "../modificReducer/todoListActions";
 
-// HERE
-export default (state = initialState, { type, payload }) => {
+import initialState from "../todoListInitialState";
+import { ADD_TASK, DELETE_TASK, TOGGLE_TASK } from "./todoListActions";
+
+const todoListReducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case ADD_TASK:
       return {
-        ...state,
         todoList: [
           ...state.todoList,
           {
@@ -22,7 +20,6 @@ export default (state = initialState, { type, payload }) => {
 
     case DELETE_TASK:
       return {
-        ...state,
         todoList: [
           ...state.todoList.filter((elm) => {
             if (payload.id === elm.id) return false;
@@ -33,7 +30,6 @@ export default (state = initialState, { type, payload }) => {
 
     case TOGGLE_TASK:
       return {
-        ...state,
         todoList: [
           ...state.todoList.map((elm) => {
             if (payload.id === elm.id) elm.isDone = !elm.isDone;
@@ -41,5 +37,10 @@ export default (state = initialState, { type, payload }) => {
           }),
         ],
       };
+
+    default:
+      return state;
   }
 };
+
+export default todoListReducer;

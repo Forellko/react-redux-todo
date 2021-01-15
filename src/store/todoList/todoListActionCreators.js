@@ -1,8 +1,4 @@
-import {
-  ADD_TASK,
-  DELETE_TASK,
-  TOGGLE_TASK,
-} from "../modificReducer/todoListActions";
+import { ADD_TASK, DELETE_TASK, TOGGLE_TASK } from "./todoListActions";
 
 export const addTask = (payload) => ({
   type: ADD_TASK,

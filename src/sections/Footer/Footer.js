@@ -7,12 +7,12 @@ export default class Footer extends Component {
   render() {
     return (
       <footer className="footer hidden">
-        <Counter todoList={this.props.todoList}></Counter>
-        <Filter filterTask={this.props.filterTask}></Filter>
+        <Counter todoList={this.props.todoList} />
+        <Filter filterTask={this.props.filterTask} />
         <ClearCompleted
           clearCompleted={this.props.clearCompleted}
           todoList={this.props.todoList}
-        ></ClearCompleted>
+        />
       </footer>
     );
   }
