@@ -5,7 +5,6 @@ const filterReducer = (state = filterInitialState, { type, payload }) => {
   switch (type) {
     case FILTER_TASKS:
       return {
-        ...state,
         filter: payload,
       };
     default:

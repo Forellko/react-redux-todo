@@ -2,6 +2,7 @@ import React from "react";
 
 class ListUnit extends React.Component {
   render() {
+    const { task, toggleTask, deleteTask } = this.props;
     return (
       <li className="todo-list__unit">
         <div className="view">
@@ -9,15 +10,15 @@ class ListUnit extends React.Component {
             className="toggle"
             type="checkbox"
             onClick={(e) => {
-              this.props.toggleTask(this.props.task);
+              toggleTask(task);
             }}
-            checked={this.props.task.isDone}
+            checked={task.isDone}
           ></input>
-          <label>{this.props.task.text}</label>
+          <label>{task.text}</label>
           <button
             className="destroy"
             onClick={() => {
-              this.props.deleteTask(this.props.task);
+              deleteTask(task);
             }}
           ></button>
         </div>

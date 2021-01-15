@@ -1,4 +1,10 @@
-import { ADD_TASK, DELETE_TASK, TOGGLE_TASK } from "./todoListActions";
+import {
+  ADD_TASK,
+  CLEAR_COMPLETED_TASKS,
+  DELETE_TASK,
+  TOGGLE_TASK,
+  TOGGLE_TASKS,
+} from "./todoListActions";
 
 export const addTask = (payload) => ({
   type: ADD_TASK,
@@ -13,4 +19,13 @@ export const deleteTask = (payload) => ({
 export const toggleTask = (payload) => ({
   type: TOGGLE_TASK,
   payload,
+});
+
+export const clearCompleted = (payload) => ({
+  type: CLEAR_COMPLETED_TASKS,
+  payload,
+});
+
+export const toggleAll = () => ({
+  type: TOGGLE_TASKS,
 });

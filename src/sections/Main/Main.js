@@ -1,20 +1,20 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { toggleAll } from "../../store/manipulation/manipulationActionCreators";
 import {
   deleteTask,
   toggleTask,
+  toggleAll,
 } from "../../store/todoList/todoListActionCreators";
 import ListUnit from "./components/ListUnit";
 
 class Main extends Component {
-  selectFilter() {
-    switch (this.props.filter) {
+  selectFilter(todoList, filter) {
+    switch (filter) {
       case "all":
-        return this.props.todoList;
+        return todoList;
 
       case "completed":
-        return this.props.todoList.filter((elm) => {
+        return todoList.filter((elm) => {
           if (elm.isDone) {
             return true;
           }
@@ -22,7 +22,7 @@ class Main extends Component {
         });
 
       case "active":
-        return this.props.todoList.filter((elm) => {
+        return todoList.filter((elm) => {
           if (elm.isDone) {
             return false;
           }
@@ -30,33 +30,33 @@ class Main extends Component {
         });
 
       default:
-        return this.props.todoList;
+        return todoList;
     }
   }
 
   render() {
-    const taskList = this.props.todoList.map((elem, index) => (
+    const { deleteTask, toggleTask, toggleAll, todoList, filter } = this.props;
+
+    const taskList = this.selectFilter(todoList, filter).map((elem, index) => (
       <ListUnit
         dataId={index}
         id={index}
         key={"key" + Math.random()}
         task={elem}
-        deleteTask={this.props.deleteTask}
-        toggleTask={this.props.toggleTask}
+        deleteTask={deleteTask}
+        toggleTask={toggleTask}
       />
     ));
 
     return (
       <section className="main">
-        <>
-          <input
-            id="toggle-all"
-            type="checkbox"
-            className="toggle-all"
-            onChange={this.props.toggleAll}
-          />
-          <label for="toggle-all"></label>
-        </>
+        <input
+          id="toggle-all"
+          type="checkbox"
+          className="toggle-all"
+          onChange={toggleAll}
+        />
+        <label for="toggle-all"></label>
         <ul className="todo-list">{taskList}</ul>
       </section>
     );
@@ -64,6 +64,7 @@ class Main extends Component {
 }
 const mapStateToProps = (state) => ({
   todoList: state.todoListReducer.todoList,
+  filter: state.filterReducer.filter,
 });
 
 export default connect(mapStateToProps, {
