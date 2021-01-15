@@ -6,6 +6,7 @@ import {
   toggleAll,
 } from "../../store/todoList/todoListActionCreators";
 import ListUnit from "./components/ListUnit";
+import styles from "./styles/Main.module.scss";
 
 class Main extends Component {
   selectFilter(todoList, filter) {
@@ -49,15 +50,15 @@ class Main extends Component {
     ));
 
     return (
-      <section className="main">
+      <section className={styles.main}>
         <input
           id="toggle-all"
           type="checkbox"
-          className="toggle-all"
+          className={styles.toggle_all}
           onChange={toggleAll}
         />
         <label for="toggle-all"></label>
-        <ul className="todo-list">{taskList}</ul>
+        <ul className={styles.todo_list}>{taskList}</ul>
       </section>
     );
   }

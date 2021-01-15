@@ -1,13 +1,14 @@
 import React from "react";
+import styles from "../styles/Main.module.scss";
 
 class ListUnit extends React.Component {
   render() {
     const { task, toggleTask, deleteTask } = this.props;
     return (
-      <li className="todo-list__unit">
-        <div className="view">
+      <li className={styles.todo_list__unit}>
+        <div className={styles.view}>
           <input
-            className="toggle"
+            className={styles.toggle}
             type="checkbox"
             onClick={(e) => {
               toggleTask(task);
@@ -16,7 +17,7 @@ class ListUnit extends React.Component {
           ></input>
           <label>{task.text}</label>
           <button
-            className="destroy"
+            className={styles.destroy}
             onClick={() => {
               deleteTask(task);
             }}

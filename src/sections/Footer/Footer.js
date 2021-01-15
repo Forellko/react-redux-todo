@@ -5,6 +5,7 @@ import { clearCompleted } from "../../store/todoList/todoListActionCreators";
 import ClearCompleted from "./components/ClearCompleted";
 import Counter from "./components/Counter";
 import Filter from "./components/Filter";
+import styles from "./styles/Footer.module.scss";
 
 class Footer extends Component {
   render() {
