@@ -5,8 +5,7 @@ import {
   deleteTask,
   toggleTask,
 } from "../../store/todoList/todoListActionCreators";
-import TaskList from "./components/TaskList";
-import ToggleAll from "./components/ToggleAll";
+import ListUnit from "./components/ListUnit";
 
 class Main extends Component {
   selectFilter() {
@@ -36,13 +35,29 @@ class Main extends Component {
   }
 
   render() {
+    const taskList = this.props.todoList.map((elem, index) => (
+      <ListUnit
+        dataId={index}
+        id={index}
+        key={"key" + Math.random()}
+        task={elem}
+        deleteTask={this.props.deleteTask}
+        toggleTask={this.props.toggleTask}
+      />
+    ));
+
     return (
-      <section className="main" id="main">
-        <ToggleAll toggleAll={this.props.toggleAll} />
-        <TaskList
-          toggleTask={this.props.toggleTask}
-          deleteTask={this.props.deleteTask}
-        />
+      <section className="main">
+        <>
+          <input
+            id="toggle-all"
+            type="checkbox"
+            className="toggle-all"
+            onChange={this.props.toggleAll}
+          />
+          <label for="toggle-all"></label>
+        </>
+        <ul className="todo-list">{taskList}</ul>
       </section>
     );
   }
