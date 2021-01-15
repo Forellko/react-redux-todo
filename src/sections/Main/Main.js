@@ -38,8 +38,11 @@ class Main extends Component {
   render() {
     return (
       <section className="main" id="main">
-        <ToggleAll />
-        <TaskList />
+        <ToggleAll toggleAll={this.props.toggleAll} />
+        <TaskList
+          toggleTask={this.props.toggleTask}
+          deleteTask={this.props.deleteTask}
+        />
       </section>
     );
   }
