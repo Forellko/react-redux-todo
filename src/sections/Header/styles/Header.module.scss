@@ -1,8 +1,10 @@
+@import "../../../colors/colors.scss";
+
 .header .new-todo {
   padding: 16px 16px 16px 60px;
   border: none;
-  background: rgba(0, 0, 0, 0.003);
-  box-shadow: inset 0 -2px 1px rgba(0, 0, 0, 0.03);
+  background: $HEADER_BGC;
+  box-shadow: inset 0 -2px 1px $HEADER_BOX_SHADOW;
 }
 
 .new_todo {
@@ -21,6 +23,6 @@
   -moz-osx-font-smoothing: grayscale;
   padding: 16px 16px 16px 60px;
   border: none;
-  background: rgba(0, 0, 0, 0.003);
-  box-shadow: inset 0 -2px 1px rgba(0, 0, 0, 0.03);
+  background: $HEADER_BGC;
+  box-shadow: inset 0 -2px 1px $HEADER_BOX_SHADOW;
 }

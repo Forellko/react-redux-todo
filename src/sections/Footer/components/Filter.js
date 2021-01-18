@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/anchor-has-content */
 import React from "react";
+import styles from "../styles/Footer.module.scss";
 
 export default class Filter extends React.Component {
   onClickFilter(e) {}
@@ -9,7 +10,7 @@ export default class Filter extends React.Component {
     const { filterTask } = this.props;
 
     return (
-      <ul className="filters">
+      <ul className={styles.filters}>
         <li>
           <a
             id="all"

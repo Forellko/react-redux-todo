@@ -1,9 +1,13 @@
 import React, { Component } from "react";
+import styles from "../styles/Footer.module.scss";
 
 export default class ClearCompleted extends Component {
   render() {
     return (
-      <button className="clear-completed" onClick={this.props.clearCompleted}>
+      <button
+        className={styles.clear_completed}
+        onClick={this.props.clearCompleted}
+      >
         Clear completed [
         {
           <span>

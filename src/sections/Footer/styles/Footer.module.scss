@@ -1,10 +1,12 @@
+@import "../../../colors/colors.scss";
+
 .footer {
   display: block;
-  color: #777;
+  color: $FOOTER_GREY_HARD;
   padding: 10px 15px;
   height: 20px;
   text-align: center;
-  border-top: 1px solid #e6e6e6;
+  border-top: 1px solid $FOOTER_WHITE_HARD;
 }
 
 .footer:before {
@@ -15,9 +17,9 @@
   left: 0;
   height: 50px;
   overflow: hidden;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2), 0 8px 0 -3px #f6f6f6,
-    0 9px 1px -3px rgba(0, 0, 0, 0.2), 0 16px 0 -6px #f6f6f6,
-    0 17px 2px -6px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1px 1px $FOOTER_BOX_SHADOW, 0 8px 0 -3px $FOOTER_WHITE_LIGHT,
+    0 9px 1px -3px $FOOTER_BOX_SHADOW, 0 16px 0 -6px $FOOTER_WHITE_LIGHT,
+    0 17px 2px -6px $FOOTER_BOX_SHADOW;
 }
 
 .todo_count {
@@ -52,11 +54,11 @@
 }
 
 .filters li a:hover {
-  border-color: rgba(175, 47, 47, 0.1);
+  border-color: $FOOTER_FILTER_HOVER;
 }
 
 .filters li a.selected {
-  border-color: rgba(175, 47, 47, 0.2);
+  border-color: $FOOTER_FILTER_SELECTED;
 }
 
 .clear_completed,

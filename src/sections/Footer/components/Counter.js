@@ -1,4 +1,5 @@
 import React from "react";
+import styles from "../styles/Footer.module.scss";
 
 export default class Counter extends React.Component {
   render() {
@@ -10,7 +11,7 @@ export default class Counter extends React.Component {
       }
     });
     return (
-      <span className="todo-count" id="count">
+      <span className={styles.todo_count} id="count">
         <strong>{arrDoneFilter.length + " items left"}</strong>
       </span>
     );
