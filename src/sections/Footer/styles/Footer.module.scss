@@ -9,6 +9,10 @@
   border-top: 1px solid $FOOTER_WHITE_HARD;
 }
 
+.footer__none {
+  display: none;
+}
+
 .footer:before {
   content: "";
   position: absolute;

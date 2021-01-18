@@ -11,7 +11,7 @@ class Footer extends Component {
   render() {
     const { todoList, filterTasks, clearCompleted } = this.props;
     return (
-      <footer className={styles.footer}>
+      <footer className={todoList.length ? styles.footer : styles.footer__none}>
         <Counter todoList={todoList} />
         <Filter filterTask={filterTasks} />
         <ClearCompleted clearCompleted={clearCompleted} todoList={todoList} />
