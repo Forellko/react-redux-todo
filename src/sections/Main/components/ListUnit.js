@@ -1,16 +1,16 @@
 import React from "react";
-import styles from "../styles/Main.module.scss";
+import styles from "../Main.module.scss";
 
 class ListUnit extends React.Component {
   render() {
     const { task, toggleTask, deleteTask } = this.props;
     return (
-      <li className={styles.todo_list__unit}>
+      <li className={styles.todoList__unit}>
         <div className={styles.view}>
           <input
             className={styles.toggle}
             type="checkbox"
-            onClick={(e) => {
+            onChange={(e) => {
               toggleTask(task);
             }}
             checked={task.isDone}

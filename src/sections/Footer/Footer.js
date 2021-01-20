@@ -5,7 +5,7 @@ import { clearCompleted } from "../../store/todoList/todoListActionCreators";
 import ClearCompleted from "./components/ClearCompleted";
 import Counter from "./components/Counter";
 import Filter from "./components/Filter";
-import styles from "./styles/Footer.module.scss";
+import styles from "./Footer.module.scss";
 
 class Footer extends Component {
   render() {
@@ -14,7 +14,10 @@ class Footer extends Component {
       <footer className={todoList.length ? styles.footer : styles.footer__none}>
         <Counter todoList={todoList} />
         <Filter filterTask={filterTasks} />
-        <ClearCompleted clearCompleted={clearCompleted} todoList={todoList} />
+        <ClearCompleted
+          handleClearCompleted={clearCompleted}
+          todoList={todoList}
+        />
       </footer>
     );
   }
@@ -22,7 +25,6 @@ class Footer extends Component {
 
 const mapStateToProps = (state) => ({
   todoList: state.todoListReducer.todoList,
-  filter: state.filterReducer.filter,
 });
 
 export default connect(mapStateToProps, {

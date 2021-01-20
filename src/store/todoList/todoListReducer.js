@@ -1,14 +1,14 @@
-/* eslint-disable default-case */
-/* eslint-disable import/no-anonymous-default-export */
-
-import initialState from "./todoListInitialState";
 import {
   ADD_TASK,
   DELETE_TASK,
   TOGGLE_TASK,
   TOGGLE_TASKS,
   CLEAR_COMPLETED_TASKS,
-} from "./todoListActions";
+} from "./todoListActionCreators.js";
+
+const initialState = {
+  todoList: [],
+};
 
 const todoListReducer = (state = initialState, { type, payload }) => {
   switch (type) {
@@ -26,19 +26,17 @@ const todoListReducer = (state = initialState, { type, payload }) => {
 
     case DELETE_TASK:
       return {
-        todoList: [
-          ...state.todoList.filter((elm) => {
-            if (payload.id === elm.id) return false;
-            return true;
-          }),
-        ],
+        todoList: [...state.todoList.filter((elm) => payload.id !== elm.id)],
       };
 
     case TOGGLE_TASK:
       return {
         todoList: [
           ...state.todoList.map((elm) => {
-            if (payload.id === elm.id) elm.isDone = !elm.isDone;
+            if (payload.id === elm.id) {
+              elm.isDone = !elm.isDone;
+            }
+
             return elm;
           }),
         ],
@@ -56,12 +54,7 @@ const todoListReducer = (state = initialState, { type, payload }) => {
       };
 
     case TOGGLE_TASKS:
-      let toggleToDone = false;
-      state.todoList.forEach((elm) => {
-        if (!elm.isDone) {
-          toggleToDone = true;
-        }
-      });
+      let toggleToDone = state.todoList.some((elm) => !elm.isDone);
 
       return {
         ...state,

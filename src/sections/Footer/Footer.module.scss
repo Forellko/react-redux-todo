@@ -1,4 +1,4 @@
-@import "../../../colors/colors.scss";
+@import "../../style/colors.scss";
 
 .footer {
   display: block;
@@ -26,12 +26,12 @@
     0 17px 2px -6px $FOOTER_BOX_SHADOW;
 }
 
-.todo_count {
+.todoCount {
   float: left;
   text-align: left;
 }
 
-.todo_count strong {
+.todoCount strong {
   font-weight: 300;
 }
 
@@ -48,7 +48,7 @@
   display: inline;
 }
 
-.filters li a {
+.filters li button {
   color: inherit;
   margin: 3px;
   padding: 3px 7px;
@@ -57,16 +57,16 @@
   border-radius: 3px;
 }
 
-.filters li a:hover {
+.filters li button:hover {
   border-color: $FOOTER_FILTER_HOVER;
 }
 
-.filters li a.selected {
+.filters li button.selected {
   border-color: $FOOTER_FILTER_SELECTED;
 }
 
-.clear_completed,
-html .clear_completed:active {
+.clearCompleted,
+html .clearCompleted:active {
   float: right;
   position: relative;
   line-height: 20px;
@@ -74,6 +74,6 @@ html .clear_completed:active {
   cursor: pointer;
 }
 
-.clear_completed:hover {
+.clearCompleted:hover {
   text-decoration: underline;
 }

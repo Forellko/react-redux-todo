@@ -7,7 +7,7 @@ import Footer from "./sections/Footer/Footer";
 class App extends React.Component {
   render() {
     return (
-      <section className="todoapp">
+      <section className="todoApp">
         <Header />
         <Main />
         <Footer />

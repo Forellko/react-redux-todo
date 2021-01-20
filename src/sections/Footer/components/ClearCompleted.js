@@ -1,25 +1,20 @@
 import React, { Component } from "react";
-import styles from "../styles/Footer.module.scss";
+import styles from "../Footer.module.scss";
 
 export default class ClearCompleted extends Component {
+  calcDoneTask = () => {
+    return this.props.todoList.filter((elm) => {
+      return elm.isDone;
+    }).length;
+  };
+
   render() {
     return (
       <button
-        className={styles.clear_completed}
-        onClick={this.props.clearCompleted}
+        className={styles.clearCompleted}
+        onClick={this.props.handleClearCompleted}
       >
-        Clear completed [
-        {
-          <span>
-            {
-              this.props.todoList.filter((elm) => {
-                if (elm.isDone) return true;
-                return false;
-              }).length
-            }
-          </span>
-        }
-        ]
+        Clear completed [{<span>{this.calcDoneTask()}</span>}]
       </button>
     );
   }

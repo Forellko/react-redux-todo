@@ -1,7 +1,10 @@
-import filterInitialState from "./filterInitialState";
-import { FILTER_TASKS } from "./filterActions";
+import { FILTER_TASKS } from "./filterActionCreators";
 
-const filterReducer = (state = filterInitialState, { type, payload }) => {
+const InitialState = {
+  filter: "all",
+};
+
+const filterReducer = (state = InitialState, { type, payload }) => {
   switch (type) {
     case FILTER_TASKS:
       return {

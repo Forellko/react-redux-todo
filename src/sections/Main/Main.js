@@ -6,19 +6,17 @@ import {
   toggleAll,
 } from "../../store/todoList/todoListActionCreators";
 import ListUnit from "./components/ListUnit";
-import styles from "./styles/Main.module.scss";
+import styles from "./Main.module.scss";
 import { ReactComponent as ReactCompleteAll } from "../../images/complete_all.svg";
-import { createSelector } from "reselect";
+import selectFilter from "./MainSelector";
 
 class Main extends Component {
   render() {
     const { deleteTask, toggleTask, toggleAll, selectFilter } = this.props;
 
-    const taskList = selectFilter.map((elem, index) => (
+    const taskList = selectFilter.map((elem) => (
       <ListUnit
-        dataId={index}
-        id={index}
-        key={"key" + Math.random()}
+        key={elem.id}
         task={elem}
         deleteTask={deleteTask}
         toggleTask={toggleTask}
@@ -30,54 +28,24 @@ class Main extends Component {
         <input
           id="toggle-all"
           type="checkbox"
-          className={styles.toggle_all}
+          className={styles.toggleAll}
           onChange={toggleAll}
         />
-        <label for="toggle-all">
+        <label htmlFor="toggle-all">
           <ReactCompleteAll
             height="25px"
             width="25px"
             className="complete_all_svg"
-          ></ReactCompleteAll>
+          />
         </label>
-        <ul className={styles.todo_list}>{taskList}</ul>
+        <ul className={styles.todoList}>{taskList}</ul>
       </section>
     );
   }
 }
 
-const filterSelector = (state) => state.filter;
-const todoListSelector = (state) => state.todoList;
-const selectFilter = createSelector(
-  [todoListSelector, filterSelector],
-  (todoList, filter) => {
-    switch (filter) {
-      case "all":
-        return todoList;
-
-      case "completed":
-        return todoList.filter((elm) => {
-          return elm.isDone;
-        });
-
-      case "active":
-        return todoList.filter((elm) => {
-          return !elm.isDone;
-        });
-
-      default:
-        return todoList;
-    }
-  }
-);
-
 const mapStateToProps = (state) => ({
-  todoList: state.todoListReducer.todoList,
-  filter: state.filterReducer.filter,
-  selectFilter: selectFilter({
-    todoList: state.todoListReducer.todoList,
-    filter: state.filterReducer.filter,
-  }),
+  selectFilter: selectFilter(state),
 });
 
 export default connect(mapStateToProps, {

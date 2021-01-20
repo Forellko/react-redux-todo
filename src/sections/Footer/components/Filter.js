@@ -1,48 +1,36 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/anchor-has-content */
 import React from "react";
-import styles from "../styles/Footer.module.scss";
+import styles from "../Footer.module.scss";
 
 export default class Filter extends React.Component {
-  onClickFilter(e) {}
+  handleClickFilter(e, filter) {
+    this.props.filterTask(filter);
+  }
 
   render() {
-    const { filterTask } = this.props;
-
     return (
       <ul className={styles.filters}>
         <li>
-          <a
-            id="all"
-            onClick={(e) => {
-              e.preventDefault();
-              filterTask("all");
-            }}
-          >
+          <button id="all" onClick={(e) => this.handleClickFilter(e, "all")}>
             All{" "}
-          </a>
+          </button>
         </li>
         <li>
-          <a
+          <button
             id="active"
-            onClick={(e) => {
-              e.preventDefault();
-              filterTask("active");
-            }}
+            onClick={(e) => this.handleClickFilter(e, "active")}
           >
             Active{" "}
-          </a>
+          </button>
         </li>
         <li>
-          <a
-            id="completed"
-            onClick={(e) => {
-              e.preventDefault();
-              filterTask("completed");
-            }}
+          <button
+            id="complete"
+            onClick={(e) => this.handleClickFilter(e, "completed")}
           >
             Completed{" "}
-          </a>
+          </button>
         </li>
       </ul>
     );
